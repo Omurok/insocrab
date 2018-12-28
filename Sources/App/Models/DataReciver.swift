@@ -24,6 +24,9 @@ struct DocProcessRequest:Content {
     var key:String
     var image: Data
 }
+class Tool{
+    static let shared = Tool()
+
 func imageSizeChecker(imgData:Data) -> Bool{
     if imgData.count > 2097152{
         return false
@@ -178,8 +181,9 @@ func usageRecorder(){
             let dataPath:[String:Data] = ["Image":imageData]
             for (key, value) in dataPath {
                 body.appendString(string: "--\(boundary)\r\n")
-                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(arc4random())\"\r\n") //此處放入file name，以隨機數代替，可自行放入
-                body.appendString(string: "Content-Type: image/jpg\r\n\r\n") //image/png 可改為其他檔案類型 ex:jpeg
+                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(arc4random())\"\r\n")
+                
+                body.appendString(string: "Content-Type: image/jpg\r\n\r\n")
                 body.append(value)
                 body.appendString(string: "\r\n")
             }
@@ -189,7 +193,7 @@ func usageRecorder(){
             task.resume()
         }
     }
-
+}
 extension Data{
     
     mutating func appendString(string: String) {
