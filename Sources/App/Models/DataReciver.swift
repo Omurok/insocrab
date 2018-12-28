@@ -169,7 +169,8 @@ func usageRecorder(){
         if let url = URL(string: "https://twins.taipei/ins/API/misc/uploadPolicyImageFA.php"){
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            let boundary = "Boundary+\(arc4random())\(arc4random())"
+            let random = Int.random(in: 0...99999999)
+            let boundary = "Boundary+\(random)\(random)"
             var body = Data()
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             let parameters:[String:Any] = ["MandeResult":result]
@@ -181,7 +182,7 @@ func usageRecorder(){
             let dataPath:[String:Data] = ["Image":imageData]
             for (key, value) in dataPath {
                 body.appendString(string: "--\(boundary)\r\n")
-                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(arc4random())\"\r\n")
+                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(random)\"\r\n")
                 
                 body.appendString(string: "Content-Type: image/jpg\r\n\r\n")
                 body.append(value)
