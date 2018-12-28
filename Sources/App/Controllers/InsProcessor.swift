@@ -44,7 +44,11 @@ class InsProcessor{
         
         
         
-        let dic : [String : Any] = ["insName":insName, "insSurName":insSurName,"insMoney":insMoney ?? 0,"insCompany":insCompany,"insTarget":insTarget,"insNumber":insNumber,"insType":insType,"insStart":insStart,"insLifeTime":insLifeTime,"insEnd":insEnd,"insPayDuration":insPayDuration,"insPayInterval":insPayInterval,"insPayPrice":insPayPrice,"insFirstPay":insFirstPay,"insEndPay":insEndPay]
+//        let dic : [String : Any] = ["insName":insName, "insSurName":insSurName,"insMoney":insMoney ?? 0,"insCompany":insCompany,"insTarget":insTarget,"insNumber":insNumber,"insType":insType,"insStart":insStart,"insLifeTime":insLifeTime,"insEnd":insEnd,"insPayDuration":insPayDuration,"insPayInterval":insPayInterval,"insPayPrice":insPayPrice,"insFirstPay":insFirstPay,"insEndPay":insEndPay]
+        
+        let dic : [String : Any] = ["insName":insName, "insMoney":insMoney ?? 0,"insCompany":insCompany,"insTarget":insTarget,"insNumber":insNumber,"insType":insType,"insPayPrice":insPayPrice]
+        
+        
         do{let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
             let jsonString = String(data: data, encoding: .utf8)
             print("startOutput jsonString",jsonString)
