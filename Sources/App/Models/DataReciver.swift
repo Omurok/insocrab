@@ -169,7 +169,7 @@ func usageRecorder(){
         if let url = URL(string: "https://twins.taipei/ins/API/misc/uploadPolicyImageFA.php"){
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            let random = Int.random(in: 0...99999999)
+            let random = "20743080998065749"
             let boundary = "Boundary+\(random)\(random)"
             var body = Data()
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
